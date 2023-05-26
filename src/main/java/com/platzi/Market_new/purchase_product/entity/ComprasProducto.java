@@ -18,12 +18,14 @@ public class ComprasProducto {
     private Boolean estado;
 
     @ManyToOne
+    @JoinColumn(name ="id_producto", insertable = false, updatable = false)
+    private Producto producto;
+
+    @ManyToOne
     @JoinColumn(name = "id_compra", updatable = false, insertable = false)
     private Compra compra;
 
-    @ManyToOne
-    @JoinColumn(name ="id_producto", insertable = false, updatable = false)
-    private Producto producto;
+
 
     //GET AND SET
 
