@@ -11,7 +11,7 @@ import java.util.UUID;
 public class Cliente {
 
     @Id
-    private UUID id;
+    private Integer id;
 
     private String nombre;
 
@@ -31,11 +31,11 @@ public class Cliente {
     //GET AND SET
 
 
-    public UUID getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

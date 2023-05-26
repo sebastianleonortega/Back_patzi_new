@@ -14,7 +14,7 @@ public class Producto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_producto")
-    private UUID idProducto;
+    private Integer idProducto;
 
     private String nombre;
 
@@ -43,11 +43,11 @@ public class Producto {
     //Get and set
 
 
-    public UUID getIdProducto() {
+    public Integer getIdProducto() {
         return idProducto;
     }
 
-    public void setIdProducto(UUID idProducto) {
+    public void setIdProducto(Integer idProducto) {
         this.idProducto = idProducto;
     }
 

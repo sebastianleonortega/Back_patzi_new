@@ -15,7 +15,7 @@ public class Compra {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_compra")
-    private UUID idCompra;
+    private Integer idCompra;
 
     @Column(name = "id_cliente")
     private String idCliente;
@@ -39,11 +39,12 @@ public class Compra {
 
     //GET AND SET
 
-    public UUID getIdCompra() {
+
+    public Integer getIdCompra() {
         return idCompra;
     }
 
-    public void setIdCompra(UUID idCompra) {
+    public void setIdCompra(Integer idCompra) {
         this.idCompra = idCompra;
     }
 

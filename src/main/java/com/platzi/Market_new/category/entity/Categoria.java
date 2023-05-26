@@ -12,7 +12,7 @@ public class Categoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_categoria")
-    private UUID idCategoria;
+    private Integer idCategoria;
 
 
     private String descripcion;
@@ -25,11 +25,12 @@ public class Categoria {
 
     //GET AND SET
 
-    public UUID getIdCategoria() {
+
+    public Integer getIdCategoria() {
         return idCategoria;
     }
 
-    public void setIdCategoria(UUID idCategoria) {
+    public void setIdCategoria(Integer idCategoria) {
         this.idCategoria = idCategoria;
     }
 
