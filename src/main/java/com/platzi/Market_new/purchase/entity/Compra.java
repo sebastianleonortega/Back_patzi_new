@@ -1,8 +1,11 @@
 package com.platzi.Market_new.purchase.entity;
 
+import com.platzi.Market_new.customer.entity.Cliente;
+import com.platzi.Market_new.purchase_product.entity.ComprasProducto;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -25,6 +28,12 @@ public class Compra {
     private String comentario;
     private String estado;
 
+    @ManyToOne
+    @JoinColumn(name = "id_cliente", updatable = false, insertable = false)
+    private Cliente cliente;
+
+    @OneToMany(mappedBy = "compra")
+    private List<ComprasProducto> productos;
 
 
 

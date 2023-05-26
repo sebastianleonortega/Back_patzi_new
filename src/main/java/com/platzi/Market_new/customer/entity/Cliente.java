@@ -1,5 +1,6 @@
 package com.platzi.Market_new.customer.entity;
 
+import com.platzi.Market_new.purchase.entity.Compra;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -22,6 +23,9 @@ public class Cliente {
 
     @Column(name = "correo_electronico")
     private String correoElectronico;
+
+    @OneToMany(mappedBy = "cliente")
+    private List<Compra> compras;
 
 
     //GET AND SET

@@ -1,4 +1,5 @@
 package com.platzi.Market_new.category.entity;
+import com.platzi.Market_new.product.entity.Producto;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -6,7 +7,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "categorias")
-public class Categotia {
+public class Categoria {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,6 +19,8 @@ public class Categotia {
 
     private Boolean estado;
 
+    @OneToMany(mappedBy = "categoria")
+    private List<Producto> productos;
 
 
     //GET AND SET
