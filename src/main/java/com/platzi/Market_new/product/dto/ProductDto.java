@@ -1,45 +1,35 @@
-package com.platzi.Market_new.product.entity;
+package com.platzi.Market_new.product.dto;
 
-import com.platzi.Market_new.category.entity.Categoria;
-import com.platzi.Market_new.purchase_product.entity.ComprasProducto;
-import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.antlr.v4.runtime.misc.NotNull;
 
-import java.util.List;
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class ProductDto {
 
-@Entity
-@Table(name = "productos")
-public class Producto {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_producto")
+    @JsonProperty(value = "idProducto", access = JsonProperty.Access.READ_ONLY)
     private Integer idProducto;
 
+    @JsonProperty(value= "nombre")
     private String nombre;
 
-    @Column(name ="id_categoria")
+    @JsonProperty(value="idCategoria")
     private Integer idCategoria;
 
-    @Column(name ="codigo_barras")
+    @JsonProperty(value = "codigoBarras")
     private String codigoBarras;
 
-    @Column(name ="precio_venta")
-    private Double precioVenta;
+@JsonProperty(value = " precioVenta")
+    private double precioVenta;
 
-    @Column(name ="cantidad_stock")
+@JsonProperty(value = "cantidadStock")
     private Integer cantidadStock;
 
-    private Boolean estado;
-
-    @ManyToOne
-    @JoinColumn(name = "id_categoria", insertable = false, updatable = false)
-   private Categoria categoria;
-
-   @OneToMany(mappedBy = "producto")
-    private List<ComprasProducto> comprasProducto;
+@JsonProperty(value = "estado")
+    private boolean estado;
 
 
-    //Get and set
+//GET AND SET
 
 
     public Integer getIdProducto() {
@@ -74,11 +64,11 @@ public class Producto {
         this.codigoBarras = codigoBarras;
     }
 
-    public Double getPrecioVenta() {
+    public double getPrecioVenta() {
         return precioVenta;
     }
 
-    public void setPrecioVenta(Double precioVenta) {
+    public void setPrecioVenta(double precioVenta) {
         this.precioVenta = precioVenta;
     }
 
@@ -90,11 +80,11 @@ public class Producto {
         this.cantidadStock = cantidadStock;
     }
 
-    public Boolean getEstado() {
+    public boolean isEstado() {
         return estado;
     }
 
-    public void setEstado(Boolean estado) {
+    public void setEstado(boolean estado) {
         this.estado = estado;
     }
 }
