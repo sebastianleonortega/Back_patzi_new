@@ -1,11 +1,9 @@
 package com.platzi.Market_new.product.service;
 
-import com.platzi.Market_new.Exception.exceptions.MessageGeneric;
 import com.platzi.Market_new.product.dto.ProductDto;
 import com.platzi.Market_new.product.entity.Producto;
 import com.platzi.Market_new.product.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import org.modelmapper.ModelMapper;
@@ -74,6 +72,13 @@ public class ProductServiceImple implements ProductService{
     @Override
     public Boolean existsByProductNombre(String productNombre) {
         return productRepository.existsByProductNombre(productNombre);
+    }
+
+    @Override
+    public List<ProductDto> getProductByCategory(Integer idCategoria) {
+        return productRepository.findByIdCategoria(idCategoria).stream().map(producto -> {
+            return modelMapper.map(producto, ProductDto.class);
+        }).collect(Collectors.toList());
     }
 
 

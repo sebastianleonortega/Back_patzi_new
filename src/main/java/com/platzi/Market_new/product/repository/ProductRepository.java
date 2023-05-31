@@ -10,6 +10,7 @@ import java.util.Optional;
 public interface ProductRepository extends JpaRepository <Producto, Integer> {
 
 
+
     List<Producto> findByIdCategoria(Integer idCategoria);
 
     Boolean existsByProductNombre (String productNombre);
