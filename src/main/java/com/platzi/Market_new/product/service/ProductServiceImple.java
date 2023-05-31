@@ -34,7 +34,7 @@ public class ProductServiceImple implements ProductService{
 
         return Optional.ofNullable(productRepository.getProductoId(idProducto).map(producto -> {
             return modelMapper.map(producto, ProductDto.class);
-                }).orElseThrow(() -> new MessageGeneric("El producto no existe","404", HttpStatus.NOT_FOUND))
+                }).orElseThrow(() -> new IllegalArgumentException("El producto no existe"))
         );
     }
 
@@ -58,10 +58,8 @@ public class ProductServiceImple implements ProductService{
         return false;
     }
 
-    @Override
-    public Boolean existProductByName(String nombre) {
-        return productRepository.existProductByName(nombre);
-    }
+    //@Override
+   // public Boolean existProductByName(String nombre) {return productRepository.existProductByName(nombre);}
 
 
 }
