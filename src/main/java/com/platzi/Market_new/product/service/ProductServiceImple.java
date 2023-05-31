@@ -2,6 +2,7 @@ package com.platzi.Market_new.product.service;
 
 import com.platzi.Market_new.Exception.exceptions.MessageGeneric;
 import com.platzi.Market_new.product.dto.ProductDto;
+import com.platzi.Market_new.product.entity.Producto;
 import com.platzi.Market_new.product.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -40,13 +41,25 @@ public class ProductServiceImple implements ProductService{
 
     @Override
     public ProductDto saveProduct(ProductDto productDto) {
-        return null;
+        if (existsByProductNombre(productDto.getNombre())){
+            throw new IllegalArgumentException("Y existe un producto con este nombre");
+        }
+        try {
+            return modelMapper.map(productRepository.save(modelMapper.map(productDto, Producto.class)),ProductDto.class);
+        }catch (Exception ex){
+            throw new IllegalArgumentException("JSON mal estructurado");
+        }
     }
 
     @Override
     public ProductDto updateProduct(Integer idProducto, ProductDto productDto) {
-
-        return null;
+        if (!existsByProductNombre(productDto.getNombre())){
+            return productRepository.findById(idProducto).map(producto -> {
+                producto.setNombreProduct((productDto.getNombre()!= null)?productDto.getNombre():producto.getNombreProduct());
+                return modelMapper.map(productRepository.save(producto),ProductDto.class);
+            }).orElseThrow(()-> new IllegalArgumentException("no se encontro el producto a actualizar"));
+        }
+        throw new IllegalArgumentException("Ya existe un producto con este nombre");
     }
 
     @Override
@@ -58,8 +71,10 @@ public class ProductServiceImple implements ProductService{
         return false;
     }
 
-    //@Override
-   // public Boolean existProductByName(String nombre) {return productRepository.existProductByName(nombre);}
+    @Override
+    public Boolean existsByProductNombre(String productNombre) {
+        return productRepository.existsByProductNombre(productNombre);
+    }
 
 
 }

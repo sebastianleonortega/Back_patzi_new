@@ -15,5 +15,5 @@ public interface ProductService {
 
     Boolean deleteProduct(Integer idProducto);
 
-    //Boolean existsProductByName(String nombre);
+    Boolean existsByProductNombre (String productNombre);
 }

@@ -19,13 +19,13 @@ public class ProductDto {
     @JsonProperty(value = "codigoBarras")
     private String codigoBarras;
 
-@JsonProperty(value = " precioVenta")
+    @JsonProperty(value = " precioVenta")
     private double precioVenta;
 
-@JsonProperty(value = "cantidadStock")
+    @JsonProperty(value = "cantidadStock")
     private Integer cantidadStock;
 
-@JsonProperty(value = "estado")
+    @JsonProperty(value = "estado")
     private boolean estado;
 
 

@@ -12,7 +12,7 @@ public interface ProductRepository extends JpaRepository <Producto, Integer> {
 
     List<Producto> findByIdCategoria(Integer idCategoria);
 
-   // Boolean existsProductByName(String nombre);
+    Boolean existsByProductNombre (String productNombre);
 
     @Query(value = "SELECT * FROM public.productos WHERE id_producto=?1", nativeQuery = true)
     Optional<Producto> getProductoId(Integer idProducto);
