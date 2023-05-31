@@ -6,6 +6,9 @@ import com.platzi.Market_new.product.service.ProductServiceImple;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -37,7 +40,11 @@ public class ProductController {
         return new ResponseEntity<>(productDtos, HttpStatus.OK);
     }
 
-    public ResponseEntity<ProductDto> save (ProductDto){
-        return new ResponseEntity<>(productServiceImple.saveProduct(ProductDto, HttpStatus.OK));
+    @PostMapping("/save/")
+    public ResponseEntity<ProductDto> save (@Valid @RequestBody ProductDto productDto, BindingResult result){
+        if (result.hasErrors()){
+            throw new MethodArgumentNotValidException(result.getFieldError().getDefaultMessage()+"usted ah ingresado: "+result.getFieldError().getRejectedValue(),"400",HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(productServiceImple.saveProduct(productDto), HttpStatus.CREATED);
     }
 }
