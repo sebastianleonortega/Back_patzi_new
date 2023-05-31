@@ -37,4 +37,7 @@ public class ProductController {
         return new ResponseEntity<>(productDtos, HttpStatus.OK);
     }
 
+    public ResponseEntity<ProductDto> save (ProductDto){
+        return new ResponseEntity<>(productServiceImple.saveProduct(ProductDto, HttpStatus.OK));
+    }
 }
