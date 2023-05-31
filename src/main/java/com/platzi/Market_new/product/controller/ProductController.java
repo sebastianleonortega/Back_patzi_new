@@ -4,10 +4,9 @@ import com.platzi.Market_new.product.dto.ProductDto;
 import com.platzi.Market_new.product.entity.Producto;
 import com.platzi.Market_new.product.service.ProductServiceImple;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,14 +19,16 @@ public class ProductController {
     private ProductServiceImple productServiceImple;
 
     @GetMapping("/all")
-    public List<ProductDto> getAll(){
-        return productServiceImple.getAllProduct();
+    public ResponseEntity<List<ProductDto>>  getAll(){
+        return new ResponseEntity<>(productServiceImple.getAllProduct(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public Optional<ProductDto> getProduct(@PathVariable("id") int idProducto ){
-        return productServiceImple.getProductId(idProducto);
+    public ResponseEntity<ProductDto> getProduct(@PathVariable("id") int idProducto ){
+        return productServiceImple.getProductId(idProducto).map(productDto -> new ResponseEntity<>(productDto, HttpStatus.OK)).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
+
+
 
 
 }
