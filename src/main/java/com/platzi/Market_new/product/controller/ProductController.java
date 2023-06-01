@@ -46,4 +46,12 @@ public class ProductController {
         }
         return new ResponseEntity<>(productServiceImple.saveProduct(productDto), HttpStatus.CREATED);
     }
+
+    @PutMapping("/{id}")
+   public ResponseEntity<ProductDto> updateProduct (@RequestBody ProductDto productDto, @PathVariable("Id") Integer idProducto, BindingResult result){
+        if (result.hasErrors()){
+            throw new IllegalArgumentException("error al actualizar el producto");
+        }
+        return new ResponseEntity<>(productServiceImple.updateProduct(idProducto, productDto), HttpStatus.OK);
+   }
 }
