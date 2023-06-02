@@ -48,7 +48,7 @@ public class ProductController {
     }
 
     @PutMapping("/{id}")
-   public ResponseEntity<ProductDto> updateProduct (@RequestBody ProductDto productDto, @PathVariable("Id") Integer idProducto, BindingResult result){
+   public ResponseEntity<ProductDto> updateProduct (@RequestBody ProductDto productDto, @PathVariable("id") Integer idProducto, BindingResult result){
         if (result.hasErrors()){
             throw new IllegalArgumentException("error al actualizar el producto");
         }
