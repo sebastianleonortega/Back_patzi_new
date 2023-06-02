@@ -54,4 +54,13 @@ public class ProductController {
         }
         return new ResponseEntity<>(productServiceImple.updateProduct(idProducto, productDto), HttpStatus.OK);
    }
+
+   @DeleteMapping("/deleteproduct/{id}")
+   public ResponseEntity<ProductDto> deleteProduct (@PathVariable("id") Integer idProducto){
+        if (productServiceImple.deleteProduct(idProducto)){
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+   }
+
 }
