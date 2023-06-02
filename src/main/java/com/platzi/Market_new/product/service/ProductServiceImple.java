@@ -1,7 +1,7 @@
 package com.platzi.Market_new.product.service;
 
 import com.platzi.Market_new.product.dto.ProductDto;
-import com.platzi.Market_new.product.entity.Producto;
+import com.platzi.Market_new.product.entity.Product;
 import com.platzi.Market_new.product.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,11 +39,11 @@ public class ProductServiceImple implements ProductService{
 
     @Override
     public ProductDto saveProduct(ProductDto productDto) {
-        if (existsByProductNombre(productDto.getNombre())){
+        if (existsByProductNombre(productDto.getProductNombre())){
             throw new IllegalArgumentException("Y existe un producto con este nombre");
         }
         try {
-            return modelMapper.map(productRepository.save(modelMapper.map(productDto, Producto.class)),ProductDto.class);
+            return modelMapper.map(productRepository.save(modelMapper.map(productDto, Product.class)),ProductDto.class);
         }catch (Exception ex){
             throw new IllegalArgumentException("JSON mal estructurado");
         }
@@ -51,9 +51,9 @@ public class ProductServiceImple implements ProductService{
 
     @Override
     public ProductDto updateProduct(Integer idProducto, ProductDto productDto) {
-        if (!existsByProductNombre(productDto.getNombre())){
+        if (!existsByProductNombre(productDto.getProductNombre())){
             return productRepository.findById(idProducto).map(producto -> {
-                producto.setNombreProduct((productDto.getNombre()!= null)?productDto.getNombre():producto.getNombreProduct());
+                producto.setNombreProduct((productDto.getProductNombre()!= null)?productDto.getProductNombre():producto.getNombreProduct());
                 return modelMapper.map(productRepository.save(producto),ProductDto.class);
             }).orElseThrow(()-> new IllegalArgumentException("no se encontro el producto a actualizar"));
         }

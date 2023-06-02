@@ -11,7 +11,7 @@ public class ProductDto {
     private Integer idProducto;
 
     @JsonProperty(value= "nombre")
-    private String nombre;
+    private String productNombre;
 
     @JsonProperty(value="idCategoria")
     private Integer idCategoria;
@@ -40,12 +40,12 @@ public class ProductDto {
         this.idProducto = idProducto;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getProductNombre() {
+        return productNombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setProductNombre(String productNombre) {
+        this.productNombre = productNombre;
     }
 
     public Integer getIdCategoria() {

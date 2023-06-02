@@ -1,6 +1,6 @@
 package com.platzi.Market_new.purchase_product.entity;
 
-import com.platzi.Market_new.product.entity.Producto;
+import com.platzi.Market_new.product.entity.Product;
 import com.platzi.Market_new.purchase.entity.Compra;
 import jakarta.persistence.*;
 
@@ -19,7 +19,7 @@ public class ComprasProducto {
 
     @ManyToOne
     @JoinColumn(name ="id_producto", insertable = false, updatable = false)
-    private Producto producto;
+    private Product producto;
 
     @ManyToOne
     @JoinColumn(name = "id_compra", updatable = false, insertable = false)

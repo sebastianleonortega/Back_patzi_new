@@ -1,6 +1,6 @@
 package com.platzi.Market_new.product.entity;
 
-import com.platzi.Market_new.category.entity.Categoria;
+import com.platzi.Market_new.category.entity.Category;
 import com.platzi.Market_new.purchase_product.entity.ComprasProducto;
 import jakarta.persistence.*;
 
@@ -8,7 +8,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "productos")
-public class Producto {
+public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,7 +34,7 @@ public class Producto {
 
     @ManyToOne
     @JoinColumn(name = "id_categoria", insertable = false, updatable = false)
-   private Categoria categoria;
+   private Category categoria;
 
    @OneToMany(mappedBy = "producto")
     private List<ComprasProducto> comprasProducto;

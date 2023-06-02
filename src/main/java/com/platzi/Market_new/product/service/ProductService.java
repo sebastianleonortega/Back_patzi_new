@@ -1,7 +1,6 @@
 package com.platzi.Market_new.product.service;
 
 import com.platzi.Market_new.product.dto.ProductDto;
-import com.platzi.Market_new.product.entity.Producto;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,20 +1,20 @@
 package com.platzi.Market_new.product.repository;
 
-import com.platzi.Market_new.product.entity.Producto;
+import com.platzi.Market_new.product.entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface ProductRepository extends JpaRepository <Producto, Integer> {
+public interface ProductRepository extends JpaRepository <Product, Integer> {
 
 
 
-    List<Producto> findByIdCategoria(Integer idCategoria);
+    List<Product> findByIdCategoria(Integer idCategoria);
 
     Boolean existsByProductNombre (String productNombre);
 
     @Query(value = "SELECT * FROM public.productos WHERE id_producto=?1", nativeQuery = true)
-    Optional<Producto> getProductoId(Integer idProducto);
+    Optional<Product> getProductoId(Integer idProducto);
 }
