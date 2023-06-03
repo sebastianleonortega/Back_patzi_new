@@ -8,9 +8,9 @@ import java.util.Optional;
 public interface CategoryService {
 
     List<CategoryDto> getAllCategory();
-    Optional<CategoryDto> getCategoryId(Integer idCategoria);
-   CategoryDto updateCategory (Integer idCategoria, CategoryDto categoryDto);
+    Optional<CategoryDto> getCategoryId(Integer idCategory);
+   CategoryDto updateCategory (Integer idCategory, CategoryDto categoryDto);
     CategoryDto saveCategory(CategoryDto categoryDto);
-    Boolean existsByCategoryDescrition (String descripcion);
+    Boolean existsCategoryByDescription (String description);
 
 }

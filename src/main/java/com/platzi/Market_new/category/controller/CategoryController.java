@@ -1,8 +1,10 @@
 package com.platzi.Market_new.category.controller;
 
 import com.platzi.Market_new.category.dto.CategoryDto;
+import com.platzi.Market_new.category.service.CategoryService;
 import com.platzi.Market_new.category.service.CategoryServiceImple;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -14,16 +16,21 @@ import java.util.List;
 @RequestMapping("/category")
 public class CategoryController {
 
-    private CategoryServiceImple categoryServiceImple;
+    @Autowired
+    private CategoryService categoryService;
 
     @GetMapping("/all")
-    public ResponseEntity<List<CategoryDto>> getAll(){
-        return new ResponseEntity<>(categoryServiceImple.getAllCategory(), HttpStatus.OK);
+    public ResponseEntity<List<CategoryDto>> findAll(){
+        List<CategoryDto> categoryDtos = categoryService.getAllCategory();
+        if (!categoryDtos.isEmpty()){
+            return new ResponseEntity<>(categoryDtos, HttpStatus.OK);
+        }
+       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<CategoryDto> getCategoryById(@PathVariable("id") int idCategoria){
-        return categoryServiceImple.getCategoryId(idCategoria).map(categoryDto -> new ResponseEntity<>(categoryDto, HttpStatus.OK)).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    public ResponseEntity<CategoryDto> getCategoryById(@PathVariable("id") int idCategory){
+        return categoryService.getCategoryId(idCategory).map(categoryDto -> new ResponseEntity<>(categoryDto, HttpStatus.OK)).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @PostMapping("/save/")
@@ -31,14 +38,14 @@ public class CategoryController {
         if (result.hasErrors()){
             throw new IllegalArgumentException("ERROR AL CREAR EL PRODUCTO");
         }
-        return new ResponseEntity<>(categoryServiceImple.saveCategory(categoryDto), HttpStatus.OK);
+        return new ResponseEntity<>(categoryService.saveCategory(categoryDto), HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
-    public  ResponseEntity<CategoryDto> updateCategory (@RequestBody CategoryDto categoryDto, @PathVariable("id") Integer idCategoria, BindingResult result){
+    public  ResponseEntity<CategoryDto> updateCategory (@RequestBody CategoryDto categoryDto, @PathVariable("id") Integer idCategory, BindingResult result){
         if (result.hasErrors()){
             throw  new IllegalArgumentException("Error al actualizar el producto");
         }
-        return new ResponseEntity<>(categoryServiceImple.updateCategory(idCategoria, categoryDto), HttpStatus.OK);
+        return new ResponseEntity<>(categoryService.updateCategory(idCategory, categoryDto), HttpStatus.OK);
     }
 }

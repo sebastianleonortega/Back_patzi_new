@@ -29,8 +29,8 @@ public class CategoryServiceImple implements CategoryService{
     }
 
     @Override
-    public Optional<CategoryDto> getCategoryId(Integer idCategoria) {
-        return Optional.ofNullable(categoryRepository.getCategoryId(idCategoria).map(category -> {
+    public Optional<CategoryDto> getCategoryId(Integer idCategory) {
+        return Optional.ofNullable(categoryRepository.getCategoryId(idCategory).map(category -> {
             return modelMapper.map(category, CategoryDto.class);
         }).orElseThrow(()-> new IllegalArgumentException("la categoria no existe"))
         );
@@ -38,9 +38,9 @@ public class CategoryServiceImple implements CategoryService{
 
     @Override
     public CategoryDto updateCategory(Integer idCategoria, CategoryDto categoryDto) {
-        if (!existsByCategoryDescrition(categoryDto.getDescripcion())) {
+        if (!existsCategoryByDescription(categoryDto.getDescription())) {
             return categoryRepository.findById(idCategoria).map(category -> {
-                category.setDescripcion((categoryDto.getDescripcion() != null  )? categoryDto.getDescripcion() : category.getDescripcion());
+                category.setDescription((categoryDto.getDescription() != null  )? categoryDto.getDescription() : category.getDescription());
                 return modelMapper.map(categoryRepository.save(category), CategoryDto.class);
             }).orElseThrow(() -> new IllegalArgumentException("no se encontro el producto para actualizar"));
         }
@@ -50,7 +50,7 @@ public class CategoryServiceImple implements CategoryService{
 
     @Override
     public CategoryDto saveCategory(CategoryDto categoryDto) {
-        if (existsByCategoryDescrition(categoryDto.getDescripcion())){
+        if (existsCategoryByDescription(categoryDto.getDescription())){
             throw new IllegalArgumentException("Ya existe un producto con este nombre");
         }
         try {
@@ -60,9 +60,10 @@ public class CategoryServiceImple implements CategoryService{
         }
     }
 
+
     @Override
-    public Boolean existsByCategoryDescrition(String descripcion) {
-        return categoryRepository.existsByCategoryDescrition(descripcion);
+    public Boolean existsCategoryByDescription(String description) {
+        return categoryRepository.existsCategoryByDescription(description);
     }
 
 }

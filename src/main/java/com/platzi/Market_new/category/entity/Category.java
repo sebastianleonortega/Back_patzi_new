@@ -11,12 +11,13 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_categoria")
-    private Integer idCategoria;
+    private Integer idCategory;
 
+    @Column(name ="descripcion")
+    private String description;
 
-    private String descripcion;
-
-    private Boolean estado;
+    @Column(name= "estado")
+    private Boolean state;
 
     //-----------------------------------------------
 
@@ -28,27 +29,35 @@ public class Category {
     //GET AND SET
 
 
-    public Integer getIdCategoria() {
-        return idCategoria;
+    public Integer getIdCategory() {
+        return idCategory;
     }
 
-    public void setIdCategoria(Integer idCategoria) {
-        this.idCategoria = idCategoria;
+    public void setIdCategory(Integer idCategory) {
+        this.idCategory = idCategory;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public Boolean getEstado() {
-        return estado;
+    public Boolean getState() {
+        return state;
     }
 
-    public void setEstado(Boolean estado) {
-        this.estado = estado;
+    public void setState(Boolean state) {
+        this.state = state;
+    }
+
+    public List<Product> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(List<Product> productos) {
+        this.productos = productos;
     }
 }

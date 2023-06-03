@@ -6,39 +6,40 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CategoryDto {
 
-    @JsonProperty(value ="idCategoria", access = JsonProperty.Access.READ_ONLY)
-    private Integer idCategoria;
+    @JsonProperty(value ="idCategory", access = JsonProperty.Access.READ_ONLY)
+    private Integer idCategory;
 
-    @JsonProperty(value = "descripcion")
-    private String descripcion;
+    @JsonProperty(value = "description")
+    private String description;
 
-    @JsonProperty(value = "estado")
-    private Boolean estado;
+    @JsonProperty(value = "state")
+    private Boolean state;
+
 
     //GET AN SET
 
 
-    public Integer getIdCategoria() {
-        return idCategoria;
+    public Integer getIdCategory() {
+        return idCategory;
     }
 
-    public void setIdCategoria(Integer idCategoria) {
-        this.idCategoria = idCategoria;
+    public void setIdCategory(Integer idCategory) {
+        this.idCategory = idCategory;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public Boolean getEstado() {
-        return estado;
+    public Boolean getState() {
+        return state;
     }
 
-    public void setEstado(Boolean estado) {
-        this.estado = estado;
+    public void setState(Boolean state) {
+        this.state = state;
     }
 }
