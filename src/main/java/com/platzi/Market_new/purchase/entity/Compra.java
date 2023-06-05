@@ -1,12 +1,11 @@
 package com.platzi.Market_new.purchase.entity;
 
-import com.platzi.Market_new.customer.entity.Cliente;
+import com.platzi.Market_new.customer.entity.Customer;
 import com.platzi.Market_new.purchase_product.entity.ComprasProducto;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.UUID;
 
 @Entity
 @Table(name = "compras")
@@ -30,7 +29,7 @@ public class Compra {
 
     @ManyToOne
     @JoinColumn(name = "id_cliente", updatable = false, insertable = false)
-    private Cliente cliente;
+    private Customer cliente;
 
    @OneToMany(mappedBy = "compra")
     private List<ComprasProducto> productos;
