@@ -16,13 +16,14 @@ public class CustomerDto {
     private String lastName;
 
     @JsonProperty(value = "phone")
-    private Integer phone;
+    private String phone;
 
-    @JsonProperty(value = "direccion")
-    private String direccion;
+    @JsonProperty(value = "address")
+    private String address;
 
-    @JsonProperty(value = "correoElectronico")
-    private String correoElectronico;
+    @JsonProperty(value = "email")
+    private String email;
+
 
     //GET AND SET
 
@@ -51,27 +52,27 @@ public class CustomerDto {
         this.lastName = lastName;
     }
 
-    public Integer getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(Integer phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
-    public String getDireccion() {
-        return direccion;
+    public String getAddress() {
+        return address;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public String getCorreoElectronico() {
-        return correoElectronico;
+    public String getEmail() {
+        return email;
     }
 
-    public void setCorreoElectronico(String correoElectronico) {
-        this.correoElectronico = correoElectronico;
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

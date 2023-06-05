@@ -1,6 +1,7 @@
 package com.platzi.Market_new.customer.service;
 
 import com.platzi.Market_new.customer.dto.CustomerDto;
+import com.platzi.Market_new.customer.entity.Customer;
 import com.platzi.Market_new.customer.repository.CustomerRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,28 +23,34 @@ public class CustomerServiceImple implements CustomerService{
     @Override
     public List<CustomerDto> getAllCustomer() {
         return customerRepository.findAll().stream().map(customer -> {
-            return modelMapper.map(customer, CustomerDto.class),
+            return modelMapper.map(customer, CustomerDto.class);
         }).collect(Collectors.toList());
     }
 
     @Override
     public Optional<CustomerDto> getCustomerById(Integer customerId) {
-        return Optional.ofNullable(customerRepository.getCustomersBy(customerId).map(customer -> {
+        return Optional.ofNullable(customerRepository.findById(customerId).map(customer -> {
             return modelMapper.map(customer, CustomerDto.class);
         }).orElseThrow(()-> new IllegalArgumentException("El cliente no existe")));
     }
 
     @Override
     public CustomerDto saveCustomer(CustomerDto customerDto) {
-        if (getCustomerById(customerDto.getCustomerId()){
-            return new IllegalArgumentException("Ya existe un cliente con este nombre y apellido")
+        if (customerRepository.findById(customerDto.getCustomerId()).isPresent()){
+            throw  new IllegalArgumentException("Ya existe un cliente con esta identificacion ");
+        }try {
+            return modelMapper.map(customerRepository.save(modelMapper.map(customerDto, Customer.class)), CustomerDto.class);
+        }catch (Exception ex){
+            throw new IllegalArgumentException("json mal estructurados");
         }
-        return modelMapper.map(customerRepository.save(modelMapper.map(customerDto, CustomerDto.class)), CustomerDto.class);
     }
 
     @Override
     public CustomerDto updateCustomer(CustomerDto customerDto, Integer customerId) {
-        return null;
+        return customerRepository.findById(customerId).map(customer -> {
+            customer.setName((customerDto.getName()!=null)?customerDto.getName(): customer.getName());
+            return modelMapper.map(customerRepository.save(customer),CustomerDto.class);
+        }).orElseThrow(()-> new IllegalArgumentException("No se econtro el cliente parta actualizar"));
     }
 
 }

@@ -19,13 +19,14 @@ public class Customer {
     @Column(name="apellidos")
     private String lastName;
 
-    @Column(name = "calular")
-    private Integer phone;
+    @Column(name = "celular")
+    private String phone;
 
-    private String direccion;
+    @Column(name = "direccion")
+    private String address;
 
     @Column(name = "correo_electronico")
-    private String correoElectronico;
+    private String email;
 
     @OneToMany(mappedBy = "cliente")
     private List<Compra> compras;
@@ -58,28 +59,28 @@ public class Customer {
         this.lastName = lastName;
     }
 
-    public Integer getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(Integer phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
-    public String getDireccion() {
-        return direccion;
+    public String getAddress() {
+        return address;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public String getCorreoElectronico() {
-        return correoElectronico;
+    public String getEmail() {
+        return email;
     }
 
-    public void setCorreoElectronico(String correoElectronico) {
-        this.correoElectronico = correoElectronico;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public List<Compra> getCompras() {

@@ -11,6 +11,4 @@ import java.util.Optional;
 public interface CustomerRepository extends JpaRepository<Customer, Integer> {
 
 
-    @Query(value = "select * from public.clientes where id=?1", nativeQuery = true)
-    Optional<Customer> getCustomersBy (Integer customerId);
 }

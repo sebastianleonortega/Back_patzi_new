@@ -2,7 +2,6 @@ package com.platzi.Market_new.category.controller;
 
 import com.platzi.Market_new.category.dto.CategoryDto;
 import com.platzi.Market_new.category.service.CategoryService;
-import com.platzi.Market_new.category.service.CategoryServiceImple;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
