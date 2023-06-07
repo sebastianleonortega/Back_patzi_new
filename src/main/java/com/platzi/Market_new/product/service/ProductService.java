@@ -8,14 +8,14 @@ import java.util.Optional;
 public interface ProductService {
 
     List<ProductDto> getAllProduct();
-    Optional<ProductDto> getProductId(Integer idProducto);
+    Optional<ProductDto> getProductId(Integer idProduct);
 
     ProductDto saveProduct(ProductDto productDto);
-    ProductDto updateProduct(Integer idProducto, ProductDto productDto);
+    ProductDto updateProduct(Integer idProduct, ProductDto productDto);
 
-    Boolean deleteProduct(Integer idProducto);
+    Boolean deleteProduct(Integer idProduct);
 
-    Boolean existsByProductNombre (String productNombre);
+    Boolean existsByProductNombre (String productName);
 
-    List<ProductDto> getProductByCategory(Integer idCategoria);
+    List<ProductDto> getProductByCategory(Integer idCategory);
 }

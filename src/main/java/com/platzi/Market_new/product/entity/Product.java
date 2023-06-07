@@ -13,89 +13,106 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_producto")
-    private Integer idProducto;
+    private Integer idProduct;
 
     @Column(name = "nombre")
-    private String productNombre;
+    private String productName;
 
     @Column(name ="id_categoria")
-    private Integer idCategoria;
+    private Integer idCategory;
 
     @Column(name ="codigo_barras")
-    private String codigoBarras;
+    private String barCode;
 
     @Column(name ="precio_venta")
-    private Double precioVenta;
+    private Double priceSale;
 
     @Column(name ="cantidad_stock")
-    private Integer cantidadStock;
+    private Integer quantityStock;
 
-    private Boolean estado;
+    @Column(name = "estado")
+    private Boolean state;
 
     @ManyToOne
     @JoinColumn(name = "id_categoria", insertable = false, updatable = false)
-   private Category categoria;
+   private Category category;
 
    @OneToMany(mappedBy = "producto")
-    private List<ComprasProducto> comprasProducto;
+    private List<ComprasProducto> purchasesProduct;
 
 
     //Get and set
 
 
-    public Integer getIdProducto() {
-        return idProducto;
+    public Integer getIdProduct() {
+        return idProduct;
     }
 
-    public void setIdProducto(Integer idProducto) {
-        this.idProducto = idProducto;
+    public void setIdProduct(Integer idProduct) {
+        this.idProduct = idProduct;
     }
 
-    public String getNombreProduct() {
-        return productNombre;
+    public String getProductName() {
+        return productName;
     }
 
-    public void setNombreProduct(String nombreProduct) {
-        this.productNombre = nombreProduct;
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
-    public Integer getIdCategoria() {
-        return idCategoria;
+    public Integer getIdCategory() {
+        return idCategory;
     }
 
-    public void setIdCategoria(Integer idCategoria) {
-        this.idCategoria = idCategoria;
+    public void setIdCategory(Integer idCategory) {
+        this.idCategory = idCategory;
     }
 
-    public String getCodigoBarras() {
-        return codigoBarras;
+    public String getBarCode() {
+        return barCode;
     }
 
-    public void setCodigoBarras(String codigoBarras) {
-        this.codigoBarras = codigoBarras;
+    public void setBarCode(String barCode) {
+        this.barCode = barCode;
     }
 
-    public Double getPrecioVenta() {
-        return precioVenta;
+    public Double getPriceSale() {
+        return priceSale;
     }
 
-    public void setPrecioVenta(Double precioVenta) {
-        this.precioVenta = precioVenta;
+    public void setPriceSale(Double priceSale) {
+        this.priceSale = priceSale;
     }
 
-    public Integer getCantidadStock() {
-        return cantidadStock;
+    public Integer getQuantityStock() {
+        return quantityStock;
     }
 
-    public void setCantidadStock(Integer cantidadStock) {
-        this.cantidadStock = cantidadStock;
+    public void setQuantityStock(Integer quantityStock) {
+        this.quantityStock = quantityStock;
     }
 
-    public Boolean getEstado() {
-        return estado;
+    public Boolean getState() {
+        return state;
     }
 
-    public void setEstado(Boolean estado) {
-        this.estado = estado;
+    public void setState(Boolean state) {
+        this.state = state;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public List<ComprasProducto> getPurchasesProduct() {
+        return purchasesProduct;
+    }
+
+    public void setPurchasesProduct(List<ComprasProducto> purchasesProduct) {
+        this.purchasesProduct = purchasesProduct;
     }
 }

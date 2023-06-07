@@ -25,13 +25,13 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ProductDto> getProduct(@PathVariable("id") int idProducto ){
-        return productService.getProductId(idProducto).map(productDto -> new ResponseEntity<>(productDto, HttpStatus.OK)).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    public ResponseEntity<ProductDto> getProduct(@PathVariable("id") int idProduct ){
+        return productService.getProductId(idProduct).map(productDto -> new ResponseEntity<>(productDto, HttpStatus.OK)).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @GetMapping("/byCategory/{idCategoria}")
-    public  ResponseEntity<List<ProductDto>> getProductByCategory(@PathVariable("idCategoria") int idCategoria){
-        List<ProductDto > productDto = productService.getProductByCategory(idCategoria);
+    @GetMapping("/byCategory/{id}")
+    public  ResponseEntity<List<ProductDto>> getProductByCategory(@PathVariable("id") int idCategory){
+        List<ProductDto > productDto = productService.getProductByCategory(idCategory);
         if (productDto.isEmpty()){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -47,16 +47,16 @@ public class ProductController {
     }
 
     @PutMapping("/{id}")
-   public ResponseEntity<ProductDto> updateProduct (@RequestBody ProductDto productDto, @PathVariable("id") Integer idProducto, BindingResult result){
+   public ResponseEntity<ProductDto> updateProduct (@RequestBody ProductDto productDto, @PathVariable("id") Integer idProduct, BindingResult result){
         if (result.hasErrors()){
             throw new IllegalArgumentException("error al actualizar el producto");
         }
-        return new ResponseEntity<>(productService.updateProduct(idProducto, productDto), HttpStatus.OK);
+        return new ResponseEntity<>(productService.updateProduct(idProduct, productDto), HttpStatus.OK);
    }
 
    @DeleteMapping("/deleteproduct/{id}")
-   public ResponseEntity<ProductDto> deleteProduct (@PathVariable("id") Integer idProducto){
-        if (productService.deleteProduct(idProducto)){
+   public ResponseEntity<ProductDto> deleteProduct (@PathVariable("id") Integer idProduct){
+        if (productService.deleteProduct(idProduct)){
             return new ResponseEntity<>(HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);

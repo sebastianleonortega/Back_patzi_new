@@ -29,17 +29,17 @@ public class ProductServiceImple implements ProductService{
     }
 
     @Override
-    public Optional<ProductDto> getProductId(Integer idProducto) {
+    public Optional<ProductDto> getProductId(Integer idProduct) {
 
-        return Optional.ofNullable(productRepository.getProductoId(idProducto).map(producto -> {
-            return modelMapper.map(producto, ProductDto.class);
+        return Optional.ofNullable(productRepository.getProductoId(idProduct).map(product -> {
+            return modelMapper.map(product, ProductDto.class);
                 }).orElseThrow(() -> new IllegalArgumentException("El producto no existe"))
         );
     }
 
     @Override
     public ProductDto saveProduct(ProductDto productDto) {
-        if (existsByProductNombre(productDto.getProductNombre())){
+        if (existsByProductNombre(productDto.getProductName())){
             throw new IllegalArgumentException("Y existe un producto con este nombre");
         }
         try {
@@ -50,13 +50,13 @@ public class ProductServiceImple implements ProductService{
     }
 
     @Override
-    public ProductDto updateProduct(Integer idProducto, ProductDto productDto) {
-        if (!existsByProductNombre(productDto.getProductNombre())){
-            return productRepository.findById(idProducto).map(producto -> {
-                producto.setNombreProduct((productDto.getProductNombre()!= null)?productDto.getProductNombre():producto.getNombreProduct());
-                producto.setCantidadStock((productDto.getCantidadStock()!=null)?productDto.getCantidadStock():producto.getCantidadStock());
-                producto.setEstado(productDto.getEstado());
-               producto.setPrecioVenta((productDto.getPrecioVenta()!=0)? productDto.getPrecioVenta() : producto.getPrecioVenta());
+    public ProductDto updateProduct(Integer idProduct, ProductDto productDto) {
+        if (!existsByProductNombre(productDto.getProductName())){
+            return productRepository.findById(idProduct).map(producto -> {
+                producto.setProductName((productDto.getProductName()!= null)?productDto.getProductName():producto.getProductName());
+                producto.setQuantityStock((productDto.getQuantityStock()!=null)?productDto.getQuantityStock():producto.getQuantityStock());
+                producto.setState(productDto.getState());
+               producto.setPriceSale((productDto.getPriceSale()!=0)? productDto.getPriceSale() : producto.getPriceSale());
                 return modelMapper.map(productRepository.save(producto),ProductDto.class);
             }).orElseThrow(()-> new IllegalArgumentException("no se encontro el producto a actualizar"));
         }
@@ -64,9 +64,9 @@ public class ProductServiceImple implements ProductService{
     }
 
     @Override
-    public Boolean deleteProduct(Integer idProducto) {
-        if(productRepository.findById(idProducto).isPresent()){
-            productRepository.deleteById(idProducto);
+    public Boolean deleteProduct(Integer idProduct) {
+        if(productRepository.findById(idProduct).isPresent()){
+            productRepository.deleteById(idProduct);
             return true;
         }
         return false;
@@ -74,13 +74,13 @@ public class ProductServiceImple implements ProductService{
 
     @Override
     public Boolean existsByProductNombre(String productNombre) {
-        return productRepository.existsByProductNombre(productNombre);
+        return productRepository.existsByProductName(productNombre);
     }
 
     @Override
-    public List<ProductDto> getProductByCategory(Integer idCategoria) {
-        return productRepository.findByIdCategoria(idCategoria).stream().map(producto -> {
-            return modelMapper.map(producto, ProductDto.class);
+    public List<ProductDto> getProductByCategory(Integer idCategory) {
+        return productRepository.findByIdCategory(idCategory).stream().map(product -> {
+            return modelMapper.map(product, ProductDto.class);
         }).collect(Collectors.toList());
     }
 

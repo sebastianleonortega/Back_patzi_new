@@ -22,7 +22,7 @@ public class Category {
     //-----------------------------------------------
 
 
-    @OneToMany(mappedBy = "categoria")
+    @OneToMany(mappedBy = "category")
     private List<Product> productos;
 
 

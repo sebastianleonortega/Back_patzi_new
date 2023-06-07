@@ -7,84 +7,84 @@ import org.antlr.v4.runtime.misc.NotNull;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ProductDto {
 
-    @JsonProperty(value = "idProducto", access = JsonProperty.Access.READ_ONLY)
-    private Integer idProducto;
+    @JsonProperty(value = "idProduct", access = JsonProperty.Access.READ_ONLY)
+    private Integer idProduct;
 
-    @JsonProperty(value= "nombre")
-    private String productNombre;
+    @JsonProperty(value= "productName")
+    private String productName;
 
-    @JsonProperty(value="idCategoria")
-    private Integer idCategoria;
+    @JsonProperty(value="idCategory")
+    private Integer idCategory;
 
-    @JsonProperty(value = "codigoBarras")
-    private String codigoBarras;
+    @JsonProperty(value = "barCode")
+    private String barCode;
 
-    @JsonProperty(value = " precioVenta")
-    private double precioVenta;
+    @JsonProperty(value = " priceSale")
+    private double priceSale;
 
-    @JsonProperty(value = "cantidadStock")
-    private Integer cantidadStock;
+    @JsonProperty(value = "quantityStock")
+    private Integer quantityStock;
 
-    @JsonProperty(value = "estado")
-    private boolean estado;
+    @JsonProperty(value = "state")
+    private boolean state;
 
 
 //GET AND SET
 
 
-    public Integer getIdProducto() {
-        return idProducto;
+    public Integer getIdProduct() {
+        return idProduct;
     }
 
-    public void setIdProducto(Integer idProducto) {
-        this.idProducto = idProducto;
+    public void setIdProduct(Integer idProduct) {
+        this.idProduct = idProduct;
     }
 
-    public String getProductNombre() {
-        return productNombre;
+    public String getProductName() {
+        return productName;
     }
 
-    public void setProductNombre(String productNombre) {
-        this.productNombre = productNombre;
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
-    public Integer getIdCategoria() {
-        return idCategoria;
+    public Integer getIdCategory() {
+        return idCategory;
     }
 
-    public void setIdCategoria(Integer idCategoria) {
-        this.idCategoria = idCategoria;
+    public void setIdCategory(Integer idCategory) {
+        this.idCategory = idCategory;
     }
 
-    public String getCodigoBarras() {
-        return codigoBarras;
+    public String getBarCode() {
+        return barCode;
     }
 
-    public void setCodigoBarras(String codigoBarras) {
-        this.codigoBarras = codigoBarras;
+    public void setBarCode(String barCode) {
+        this.barCode = barCode;
     }
 
-    public double getPrecioVenta() {
-        return precioVenta;
+    public double getPriceSale() {
+        return priceSale;
     }
 
-    public void setPrecioVenta(double precioVenta) {
-        this.precioVenta = precioVenta;
+    public void setPriceSale(double priceSale) {
+        this.priceSale = priceSale;
     }
 
-    public Integer getCantidadStock() {
-        return cantidadStock;
+    public Integer getQuantityStock() {
+        return quantityStock;
     }
 
-    public void setCantidadStock(Integer cantidadStock) {
-        this.cantidadStock = cantidadStock;
+    public void setQuantityStock(Integer quantityStock) {
+        this.quantityStock = quantityStock;
     }
 
-    public boolean getEstado() {
-        return estado;
+    public boolean getState() {
+        return state;
     }
 
-    public void setEstado(boolean estado) {
-        this.estado = estado;
+    public void setState(boolean state) {
+        this.state = state;
     }
 }
