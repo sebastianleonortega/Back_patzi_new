@@ -54,6 +54,9 @@ public class ProductServiceImple implements ProductService{
         if (!existsByProductNombre(productDto.getProductNombre())){
             return productRepository.findById(idProducto).map(producto -> {
                 producto.setNombreProduct((productDto.getProductNombre()!= null)?productDto.getProductNombre():producto.getNombreProduct());
+                producto.setCantidadStock((productDto.getCantidadStock()!=null)?productDto.getCantidadStock():producto.getCantidadStock());
+                producto.setEstado(productDto.getEstado());
+               producto.setPrecioVenta((productDto.getPrecioVenta()!=0)? productDto.getPrecioVenta() : producto.getPrecioVenta());
                 return modelMapper.map(productRepository.save(producto),ProductDto.class);
             }).orElseThrow(()-> new IllegalArgumentException("no se encontro el producto a actualizar"));
         }

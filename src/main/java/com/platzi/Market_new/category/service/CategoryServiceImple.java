@@ -41,6 +41,7 @@ public class CategoryServiceImple implements CategoryService{
         if (!existsCategoryByDescription(categoryDto.getDescription())) {
             return categoryRepository.findById(idCategoria).map(category -> {
                 category.setDescription((categoryDto.getDescription() != null  )? categoryDto.getDescription() : category.getDescription());
+                category.setState(categoryDto.getState());
                 return modelMapper.map(categoryRepository.save(category), CategoryDto.class);
             }).orElseThrow(() -> new IllegalArgumentException("no se encontro el producto para actualizar"));
         }

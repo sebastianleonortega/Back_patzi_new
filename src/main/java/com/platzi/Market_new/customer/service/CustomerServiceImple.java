@@ -49,6 +49,10 @@ public class CustomerServiceImple implements CustomerService{
     public CustomerDto updateCustomer(CustomerDto customerDto, Integer customerId) {
         return customerRepository.findById(customerId).map(customer -> {
             customer.setName((customerDto.getName()!=null)?customerDto.getName(): customer.getName());
+            customer.setLastName((customerDto.getLastName()!=null)?customerDto.getLastName(): customer.getLastName());
+            customer.setPhone((customerDto.getPhone()!=null)?customerDto.getPhone(): customer.getPhone());
+            customer.setAddress((customerDto.getAddress()!=null)?customerDto.getAddress(): customer.getAddress());
+            customer.setEmail((customerDto.getEmail()!=null)?customerDto.getEmail():customer.getEmail());
             return modelMapper.map(customerRepository.save(customer),CustomerDto.class);
         }).orElseThrow(()-> new IllegalArgumentException("No se econtro el cliente parta actualizar"));
     }

@@ -80,7 +80,7 @@ public class ProductDto {
         this.cantidadStock = cantidadStock;
     }
 
-    public boolean isEstado() {
+    public boolean getEstado() {
         return estado;
     }
 

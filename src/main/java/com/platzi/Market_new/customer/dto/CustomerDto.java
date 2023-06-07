@@ -16,7 +16,7 @@ public class CustomerDto {
     private String lastName;
 
     @JsonProperty(value = "phone")
-    private String phone;
+    private Integer phone;
 
     @JsonProperty(value = "address")
     private String address;
@@ -52,11 +52,11 @@ public class CustomerDto {
         this.lastName = lastName;
     }
 
-    public String getPhone() {
+    public Integer getPhone() {
         return phone;
     }
 
-    public void setPhone(String phone) {
+    public void setPhone(Integer phone) {
         this.phone = phone;
     }
 
