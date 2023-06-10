@@ -37,7 +37,7 @@ public class Product {
     @JoinColumn(name = "id_categoria", insertable = false, updatable = false)
    private Category category;
 
-   @OneToMany(mappedBy = "producto")
+   @OneToMany(mappedBy = "product")
     private List<ComprasProducto> purchasesProduct;
 
 
@@ -115,4 +115,5 @@ public class Product {
     public void setPurchasesProduct(List<ComprasProducto> purchasesProduct) {
         this.purchasesProduct = purchasesProduct;
     }
+
 }

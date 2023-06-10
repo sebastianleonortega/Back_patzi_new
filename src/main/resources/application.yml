@@ -1,0 +1,17 @@
+server:
+  port: 8090
+  servlet:
+    context-path: /market
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/Platzi-market
+    username: postgres
+    password: 2408
+
+
+  jpa:
+
+    generate-ddl: true
+    hibernate:
+     ddl-auto: create
+

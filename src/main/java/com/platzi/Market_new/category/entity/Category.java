@@ -23,7 +23,7 @@ public class Category {
 
 
     @OneToMany(mappedBy = "category")
-    private List<Product> productos;
+    private List<Product> product;
 
 
     //GET AND SET
@@ -54,10 +54,10 @@ public class Category {
     }
 
     public List<Product> getProductos() {
-        return productos;
+        return product;
     }
 
     public void setProductos(List<Product> productos) {
-        this.productos = productos;
+        this.product = productos;
     }
 }

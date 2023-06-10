@@ -1,7 +1,7 @@
 package com.platzi.Market_new.purchase_product.entity;
 
 import com.platzi.Market_new.product.entity.Product;
-import com.platzi.Market_new.purchase.entity.Compra;
+import com.platzi.Market_new.purchase.entity.Purchase;
 import jakarta.persistence.*;
 
 @Entity
@@ -11,19 +11,21 @@ public class ComprasProducto {
     @EmbeddedId
     private ComprasProductoPK id;
 
-    private Integer cantidad;
+    @Column(name = "cantidad")
+    private Integer quantity;
 
     private double total;
 
-    private Boolean estado;
+    @Column(name = "estado")
+    private Boolean state;
 
     @ManyToOne
     @JoinColumn(name ="id_producto", insertable = false, updatable = false)
-    private Product producto;
+    private Product product;
 
     @ManyToOne
     @JoinColumn(name = "id_compra", updatable = false, insertable = false)
-    private Compra compra;
+    private Purchase purchase;
 
 
 
@@ -37,13 +39,6 @@ public class ComprasProducto {
         this.id = id;
     }
 
-    public Integer getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(Integer cantidad) {
-        this.cantidad = cantidad;
-    }
 
     public double getTotal() {
         return total;
@@ -53,11 +48,35 @@ public class ComprasProducto {
         this.total = total;
     }
 
-    public Boolean getEstado() {
-        return estado;
+    public Integer getQuantity() {
+        return quantity;
     }
 
-    public void setEstado(Boolean estado) {
-        this.estado = estado;
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public Boolean getState() {
+        return state;
+    }
+
+    public void setState(Boolean state) {
+        this.state = state;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public Purchase getCompra() {
+        return purchase;
+    }
+
+    public void setCompra(Purchase purchase) {
+        this.purchase = purchase;
     }
 }

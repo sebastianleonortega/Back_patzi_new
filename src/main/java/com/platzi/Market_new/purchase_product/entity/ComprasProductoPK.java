@@ -9,7 +9,7 @@ import java.util.UUID;
 public class ComprasProductoPK implements Serializable {
 
     @Column(name= " id_compra")
-    private UUID idCompra;
+    private Integer idCompra;
 
     @Column(name = "id_producto")
     private Integer idProducto;
@@ -17,11 +17,11 @@ public class ComprasProductoPK implements Serializable {
 
     //GET AND SET
 
-    public UUID getIdCompra() {
+    public Integer getIdCompra() {
         return idCompra;
     }
 
-    public void setIdCompra(UUID idCompra) {
+    public void setIdCompra(Integer idCompra) {
         this.idCompra = idCompra;
     }
 

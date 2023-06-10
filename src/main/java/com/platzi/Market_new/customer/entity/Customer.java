@@ -1,6 +1,6 @@
 package com.platzi.Market_new.customer.entity;
 
-import com.platzi.Market_new.purchase.entity.Compra;
+import com.platzi.Market_new.purchase.entity.Purchase;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -28,8 +28,8 @@ public class Customer {
     @Column(name = "correo_electronico")
     private String email;
 
-    @OneToMany(mappedBy = "cliente")
-    private List<Compra> compras;
+    @OneToMany(mappedBy = "customer")
+    private List<Purchase> purchases;
 
 
     //GET AND SET
@@ -83,11 +83,11 @@ public class Customer {
         this.email = email;
     }
 
-    public List<Compra> getCompras() {
-        return compras;
+    public List<Purchase> getCompras() {
+        return purchases;
     }
 
-    public void setCompras(List<Compra> compras) {
-        this.compras = compras;
+    public void setCompras(List<Purchase> compras) {
+        this.purchases = compras;
     }
 }

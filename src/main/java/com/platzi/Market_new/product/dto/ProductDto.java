@@ -19,7 +19,7 @@ public class ProductDto {
     @JsonProperty(value = "barCode")
     private String barCode;
 
-    @JsonProperty(value = " priceSale")
+    @JsonProperty(value = "priceSale")
     private double priceSale;
 
     @JsonProperty(value = "quantityStock")
