@@ -20,7 +20,7 @@ public class Customer {
     private String lastName;
 
     @Column(name = "celular")
-    private Integer phone;
+    private double phone;
 
     @Column(name = "direccion")
     private String address;
@@ -59,11 +59,11 @@ public class Customer {
         this.lastName = lastName;
     }
 
-    public Integer getPhone() {
+    public double getPhone() {
         return phone;
     }
 
-    public void setPhone(Integer phone) {
+    public void setPhone(double phone) {
         this.phone = phone;
     }
 
